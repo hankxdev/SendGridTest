@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "dot-json": "^1.0.3",
+    "web-ext": "^2.2.2",
+    "xo": "^0.18.2"
+  },
+  "scripts": {
+    "test": "xo",
+    "fix": "xo --fix",
+    "build": "npm run update-version && npm run zip",
+    "update-version": "VERSION=$(date -u +%y.%-m.%-d.%-H%M); echo $VERSION; dot-json src/manifest.json version $VERSION",
+    "zip": "web-ext build --source-dir src --artifacts-dir dist"
+  },
+  "xo": {
+    "envs": [
+      "webextensions",
+      "browser",
+      "jquery"
+    ],
+    "ignores": [
+      "dist",
+      "src/lib/jquery*"
+    ]
+  }
+}
