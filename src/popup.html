@@ -3,20 +3,21 @@
 <title>Extension Manager</title>
 <link href="lib/bulma.min.css" rel="stylesheet">
 <link href="popup.css" rel="stylesheet">
-<script src="lib/jquery-3.2.1.slim.min.js"></script>
+<script src="lib/jquery-3.4.0.min.js"></script>
+<script src="lib/sweetalert.js"></script>
 <body>
 <div class="container">
   <div class="field">
     <label class="label">Your Email: </label>
     <div class="control">
-      <input class="input is-success" id="from" type="email" placeholder="Your email">
+      <input class="input is-primary" id="from" type="email" placeholder="Your email">
     </div>
   </div>
 
   <div class="field">
     <label class="label">SendGrid API Key</label>
     <div class="control ">
-      <input class="input is-danger" id="apikey" type="text" placeholder="Your Send Grid API Key">
+      <input class="input is-primary" id="apikey" type="text" placeholder="Your Send Grid API Key">
       </span>
     </div>
   </div>
@@ -24,14 +25,14 @@
   <div class="field">
     <label class="label">Send To: </label>
     <div class="control">
-      <input class="input" type="text" id="to" placeholder="split with comma">
+      <input class="input is-primary" type="text" id="to" placeholder="Split with Comma">
     </div>
   </div>
 
   <div class="field">
     <label class="label">Subject</label>
     <div class="control">
-      <input class="input is-success" id="subject" type="text" placeholder="A subject">
+      <input class="input is-primary" id="subject" type="text" placeholder="A subject">
     </div>
   </div>
 
@@ -45,7 +46,7 @@
 
   <div class="field is-grouped">
     <div class="control">
-      <button class="button is-link" id="submit">Submit</button>
+      <button class="button is-primary" id="submit" >Submit</button>
     </div>
   </div>
 </div>
