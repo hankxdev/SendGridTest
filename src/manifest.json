@@ -1,7 +1,7 @@
 {
   "name": "SendGrid Test Email Helper",
   "description": "A simple Chrome extension to test your Sendgrid template.",
-  "version": "19.4.12.1313",
+  "version": "19.5.16.619",
   "manifest_version": 2,
   "permissions": [
     "https://api.sendgrid.com/*"
