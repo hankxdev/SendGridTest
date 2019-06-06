@@ -34,7 +34,26 @@ submitBtn.click(function () {
     }
   })
   
+  if (tos.length > 1){
+    asyncForEach(tos, async to=>{
+      await sendEmail(form, [to], that)
+    })
+  }else{
+    sendEmail(form, tos, that)
+  }
   that.addClass("is-loading")
+})
+
+async function asyncForEach(arr, callback) {
+  const arrLen = arr.length
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < arrLen; i++) {
+    // eslint-disable-next-line no-await-in-loop
+    await callback(arr[i], i, arr)
+  }
+}
+
+function sendEmail(form, to, el) {
   const data = {
     from: {
       name: form.from.replace(/@.*/g, ""),
@@ -49,28 +68,32 @@ submitBtn.click(function () {
     ],
     personalizations: [
       {
-        to: tos
+        to: to
       }
     ]
   }
-  $.ajax({
-    url: "https://api.sendgrid.com/v3/mail/send",
-    headers: {
-      "Authorization": `Bearer ${form.apikey}`
-    },
-    contentType: "application/json",
-    method: "POST",
-    data: JSON.stringify(data),
-    success: () => {
-      that.removeClass("is-loading")
-      a("email sent", "success")
-    },
-    error: (e) => {
-      that.removeClass("is-loading")
-      a("could not send your email, please check, maybe api key is not correct", "error")
-    },
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: "https://api.sendgrid.com/v3/mail/send",
+      headers: {
+        "Authorization": `Bearer ${form.apikey}`
+      },
+      contentType: "application/json",
+      method: "POST",
+      data: JSON.stringify(data),
+      success: () => {
+        resolve(true)
+        el.removeClass("is-loading")
+        a("email sent", "success")
+      },
+      error: (e) => {
+        reject(e)
+        el.removeClass("is-loading")
+        a("could not send your email, please check, maybe api key is not correct", "error")
+      },
+    })
   })
-})
+}
 
 
 function saveForm() {
