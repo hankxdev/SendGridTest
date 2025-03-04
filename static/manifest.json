@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "SendGrid API Tester",
+  "version": "1.0.0",
+  "description": "Test SendGrid API directly from your browser",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/logo.png",
+      "48": "icons/logo.png",
+      "128": "icons/logo.png"
+    }
+  },
+  "permissions": ["storage",  "https://api.sendgrid.com/*"],
+  "icons": {
+    "16": "icons/logo.png",
+    "48": "icons/logo.png",
+    "128": "icons/logo.png"
+  }
+}
+
